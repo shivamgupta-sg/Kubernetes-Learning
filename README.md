@@ -1,1 +1,1 @@
-# Kubernetes Leraning
+# Kubernetes Learning
