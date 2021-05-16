@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-pod-with-init
+  labels:
+    app: web
+spec:
+  initContainers:
+    - name: init-busybox
+      image: busybox
+      command: ["echo","This is an node app."]
+  volumes:
+  - name: nodevol               
+    emptyDir: {}
+  containers:
+  - name: node
+    image: shivamdocker1430/assign:1
+    ports:
+      - containerPort: 80
+    volumeMounts:
+    - name: nodevol
+      mountPath: /node-app
+      readOnly: true
+  restartPolicy: OnFailure
+  

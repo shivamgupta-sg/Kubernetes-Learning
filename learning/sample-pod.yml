@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-pod
+  labels:
+    app: web
+spec:
+  volumes:
+  - name: nodevol               
+    emptyDir: {}
+  containers:
+  - name: node
+    image: shivamdocker1430/assign:1
+    ports:
+      - containerPort: 80
+    volumeMounts:
+    - name: nodevol
+      mountPath: /node-app
+      readOnly: true
+  restartPolicy: OnFailure
+  

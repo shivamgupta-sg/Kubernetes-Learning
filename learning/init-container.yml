@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: node-app
+  labels:
+    app: web
+spec:
+  volumes:
+  - name: nodevol               
+    emptyDir: {}
+  initContainers:
+  - name: clone
+    image: alpine/git         
+    volumeMounts:
+    - name: nodevol
+      mountPath: /node-app
+    command:
+        - git
+        - clone
+        - --progress
+        - https://github.com/shivamgupta-sg/node-testing
+        - /node-app
+  containers:
+  - name: node
+    image: shivamdocker1430/node-testing:1
+    ports:
+      - containerPort: 80
+    volumeMounts:
+    - name: nodevol
+      mountPath: /node-app
+      readOnly: true
+  restartPolicy: OnFailure
