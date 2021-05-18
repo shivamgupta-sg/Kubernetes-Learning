@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: maven-project
+  labels:
+    name: maven-project
+spec:
+  containers:
+  - name: maven-project
+    image: 
+    ports:
+      - containerPort: <Port>

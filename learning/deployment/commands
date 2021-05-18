@@ -1,0 +1,14 @@
+kubectl create -f nginx-deployment.yml
+kubectl apply -f nginx-deployment.yml
+kubectl describe deployment nginx-deployment
+kubectl get pod -l app=nginx
+kubectl get deployments
+kubectl rollout status nginx-deployment
+kubectl edit deployment.v1.apps/nginx-deployment
+kubectl set image deploy nginx-deployment nginx=nginx:1.91 --record
+kubectl rollout histroy deployment/nginx-deployment
+kubectl rollout undo deployment nginx-deployment
+kubectl get deployment nginx-deployment -o yaml
+kubectl rollout pause deployment nginx-deployment
+kubectl rollout resume deployment nginx-deployment
+kubectl scale deployment nginx-deployment --replicas=3
