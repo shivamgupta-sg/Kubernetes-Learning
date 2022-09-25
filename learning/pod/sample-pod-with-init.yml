@@ -10,9 +10,6 @@ spec:
     - name: init-busybox
       image: busybox
       command: ["echo","This is an node app."]
-  volumes:
-  - name: nodevol               
-    emptyDir: {}
   containers:
   - name: node
     image: shivamdocker1430/assign:1
@@ -22,5 +19,8 @@ spec:
     - name: nodevol
       mountPath: /node-app
       readOnly: true
+  volumes:
+  - name: nodevol               
+    emptyDir: {}
   restartPolicy: OnFailure
   
